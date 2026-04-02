@@ -7,7 +7,7 @@ VOCAB = {
     "what": "wut"
 }
 
-def uwuify(inp: str, *args, use_letter_change: bool = True, use_kaomojis: bool = True, use_squiggly_lines: bool = True, use_stutter: bool = True, use_vocab: bool = True):
+def uwuify(inp: str, *args, use_letter_change: bool = True, use_kaomojis: bool = True, use_squiggly_lines: bool = False, use_stutter: bool = True, use_vocab: bool = True):
     if use_vocab:
         inp_tmp = inp.split(" ")
 
@@ -45,4 +45,7 @@ def uwuify(inp: str, *args, use_letter_change: bool = True, use_kaomojis: bool =
     return inp
 
 if __name__ == "__main__":
-    print(uwuify("The quick brown fox jumps over the lazy dog. love and something yeah what good."))
+    import sys
+    if len(sys.argv) > 1:
+        for i in sys.argv[1].splitlines():
+            print(uwuify(i))

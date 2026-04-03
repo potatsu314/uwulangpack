@@ -13,3 +13,5 @@ Or just get some help :D
 ```
 ./uwuify.py --help
 ```
+---
+[modrinth](https://modrinth.com/resourcepack/uwulangpack)

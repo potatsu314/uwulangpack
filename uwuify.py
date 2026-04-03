@@ -119,7 +119,18 @@ for i in locales.keys():
     f.writestr(f"assets/{i}/lang/en_uwu.json", json.dumps(locales[i]))
 if args.texts and (end is not None or splash is not None):
     def convert_multiline_string(inp: str) -> str:
-        return "\n".join([uwuify(x, random_seed=x, use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab, use_lower_case=args.lowercase) for x in inp.splitlines()])
+        ret = []
+        for i in inp.splitlines():
+            if "PLAYERNAME" not in i:
+                ret.append(uwuify(i, random_seed=i, use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab, use_lower_case=args.lowercase))
+            else:
+                s = i.split("PLAYERNAME")
+                for i in range(len(s) - 1):
+                    s[i] = uwuify(s[i], random_seed=s[i], use_letter_change=args.letters, use_kaomojis=False, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab, use_lower_case=args.lowercase)
+                    
+                s[-1] = uwuify(s[-1], random_seed=s[-1], use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab, use_lower_case=args.lowercase)
+                ret.append("PLAYERNAME".join(s))
+        return "\n".join(ret)
     
     f.mkdir("assets/minecraft/texts")
     if end is not None:

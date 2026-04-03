@@ -17,7 +17,7 @@ VOCAB = {
     "Feet": "Paws"
 }
 
-def uwuify(inp: str, *args, random_seed: str | int | float | None = None, use_letter_change: bool = True, use_kaomojis: bool = True, use_squiggly_lines: bool = False, use_stutter: bool = True, use_vocab: bool = True):
+def uwuify(inp: str, *args, random_seed: str | int | float | None = None, use_letter_change: bool = True, use_kaomojis: bool = True, use_squiggly_lines: bool = False, use_stutter: bool = True, use_vocab: bool = True, use_lower_case: bool = False):
     if len(inp) == 0: return ""
 
     r = None
@@ -30,6 +30,8 @@ def uwuify(inp: str, *args, random_seed: str | int | float | None = None, use_le
     if use_vocab:
         for i in VOCAB.keys():
             inp = inp.replace(i, VOCAB[i])
+    if use_lower_case:
+        inp = inp.lower()
     if use_letter_change:
         inp = inp.replace("r", "w").replace("l", "w").replace("R", "W").replace("L", "W")
     if use_stutter:

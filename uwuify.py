@@ -17,6 +17,7 @@ parser.add_argument("-k", "--kaomojis", action="store_true", help="add kaomojis 
 parser.add_argument("-s", "--stutter", action="store_true", help="add random stutters to words")
 parser.add_argument("-q", "--squiggly", action="store_true", help="add random ~ to words")
 parser.add_argument("-c", "--vocab", action="store_true", help="replace some words with predefined uwuified words")
+parser.add_argument("-w", "--lowercase", action="store_true", help="change all letters to lowercase variants")
 parser.add_argument("--texts", action="store_true", help="translate vanilla splash/end credits text too")
 parser.add_argument("--pack-mcmeta", type=str, help="pack.mcmeta for a resource pack")
 parser.add_argument("--pack-png", type=str, help="pack.png for a resource pack (pls make sure that it is a png)")
@@ -84,7 +85,7 @@ for i in args.input:
 
 for i in locales.keys():
     for j in locales[i].keys():
-        locales[i][j] = uwuify(locales[i][j], random_seed=j, use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab)
+        locales[i][j] = uwuify(locales[i][j], random_seed=j, use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab, use_lower_case=args.lowercase)
 
 if len(locales) == 0:
     print("couldn't find any translation files")
@@ -118,7 +119,7 @@ for i in locales.keys():
     f.writestr(f"assets/{i}/lang/en_uwu.json", json.dumps(locales[i]))
 if args.texts and (end is not None or splash is not None):
     def convert_multiline_string(inp: str) -> str:
-        return "\n".join([uwuify(x, random_seed=x, use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab) for x in inp.splitlines()])
+        return "\n".join([uwuify(x, random_seed=x, use_letter_change=args.letters, use_kaomojis=args.kaomojis, use_squiggly_lines=args.squiggly, use_stutter=args.stutter, use_vocab=args.vocab, use_lower_case=args.lowercase) for x in inp.splitlines()])
     
     f.mkdir("assets/minecraft/texts")
     if end is not None:

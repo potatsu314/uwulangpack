@@ -117,7 +117,7 @@ if len(locales) == 0:
     print("couldn't find any translation files")
     sys.exit()
 
-f = zipfile.ZipFile(args.output, "w")
+f = zipfile.ZipFile(args.output, "w", zipfile.ZIP_DEFLATED, compresslevel=9)
 
 if args.pack_mcmeta is not None:
     f.write(args.pack_mcmeta, "pack.mcmeta")

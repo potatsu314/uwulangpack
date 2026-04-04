@@ -64,6 +64,6 @@ def uwuify(inp: str, *args, random_seed: str | int | float | None = None, lang_r
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 2:
         for i in sys.argv[1].splitlines():
-            print(uwuify(i))
+            print(uwuify(i, lang_rules=LANG[sys.argv[2]]))

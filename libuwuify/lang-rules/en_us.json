@@ -1,0 +1,31 @@
+{
+  "vocab": {
+    "love": "wuv",
+    "Love": "Wuv",
+    "friend": "fwend",
+    "Friend": "Fwend",
+    "good": "gud",
+    "Good": "Gud",
+    "what": "wut",
+    "What": "Wut",
+    "hand": "paw",
+    "hands": "paws",
+    "Hand": "Paw",
+    "Hands": "Paws",
+    "feet": "paws",
+    "Feet": "Paws"
+  },
+  "letter_replacements": { "r": "w", "l": "w", "R": "W", "L": "W", "th": "d" },
+  "kaomojis": [
+    ":3",
+    "UwU",
+    "OwO",
+    ">w<",
+    "~w~",
+    "qwq",
+    ">~<",
+    ":3c",
+    ">:3",
+    ">:3c"
+  ]
+}

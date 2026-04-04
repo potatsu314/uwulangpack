@@ -11,5 +11,5 @@ wheels/
 
 # mc specific stuff
 uwulang.zip
-pack.mcmeta
+pack*.mcmeta
 pack.png

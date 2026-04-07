@@ -18,7 +18,7 @@ class Lang:
     
     def __getitem__(self, key: str) -> LangRules:
         if key not in self.s:
-            print(self.s)
+            return self.s["en_us"]
         return self.s[key]
 
 LANG = Lang()
